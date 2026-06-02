@@ -29,6 +29,11 @@ export const User = client.define(
       type: DataTypes.DATE,
       allowNull: true,
     },
+    isActive: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+      allowNull: false,
+    },
   },
   {
     tableName: 'users',

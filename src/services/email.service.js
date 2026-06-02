@@ -2,7 +2,7 @@ import nodemailer from 'nodemailer';
 
 const testAccount = await nodemailer.createTestAccount();
 
-//console.log(testAccount);
+// console.log(testAccount);
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.ethereal.email',
@@ -20,9 +20,9 @@ export async function send({ email, subject, html }) {
     html,
   });
 
-  //console.log(info.messageId);
+  // console.log(info.messageId);
 
-  //console.log(nodemailer.getTestMessageUrl(info));
+  // console.log(nodemailer.getTestMessageUrl(info));
 
   return info;
 }

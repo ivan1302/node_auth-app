@@ -63,7 +63,7 @@ const activate = async (req, res) => {
   user.activationToken = null;
   await user.save();
 
-  res.send(user);
+  res.redirect('/profile');
 };
 
 const login = async (req, res) => {
@@ -72,6 +72,10 @@ const login = async (req, res) => {
 
   if (!user) {
     throw ApiError.BadRequest('User with this email does not exist');
+  }
+
+  if (!user.isActive) {
+    throw ApiError.Unauthorized('Please activate your account via email');
   }
 
   const isPasswordValid = await bcrypt.compare(password, user.password);

@@ -54,6 +54,10 @@ const updateProfile = async (req, res) => {
   }
 
   if (password) {
+    if (password.length < 6) {
+      throw ApiError.BadRequest('Password must be at least 6 characters');
+    }
+
     if (password !== confirmationPassword) {
       throw ApiError.BadRequest('Passwords do not match');
     }
