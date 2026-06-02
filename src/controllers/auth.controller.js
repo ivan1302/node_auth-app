@@ -60,6 +60,7 @@ const activate = async (req, res) => {
     return res.status(404).send({ message: 'User not found' });
   }
 
+  user.isActive = true;
   user.activationToken = null;
   await user.save();
 
@@ -175,7 +176,7 @@ const checkResetToken = async (req, res) => {
 
   await user.save();
   */
-  res.send(user);
+  res.status(200).send({ message: 'Token is valid' });
 };
 
 const ConfirmResetPassword = async (req, res) => {
